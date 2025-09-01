@@ -8,6 +8,6 @@ return {
   },
   lazy=false,
   keys = {
-    {"<C-n>",":Neotree filesystem reveal float toggle=true<cr>",desc = ""}
+    {"<C-n>",":Neotree filesystem reveal float toggle=true<cr>",desc = "Neo-tree"}
   }
 }

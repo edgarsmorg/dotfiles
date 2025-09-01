@@ -6,13 +6,4 @@ return {
     {"<C-p>", ":Telescope find_files prompt_prefix=🔍 hidden=true<cr>", desc = ""},
     {"<C-b>", ":Telescope buffers<cr>", desc = ""}
   },
-  opts = {
-    defaults = {
-      mappings = {
-         i = {
-           ["<cr>"] = require("telescope.actions").select_default,
-         },
-      },
-    },
-  },
 }
