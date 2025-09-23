@@ -9,6 +9,7 @@ return {
     dependencies = {
         "mason-org/mason.nvim",
         "neovim/nvim-lspconfig",
+        "WhoIsSethDaniel/mason-tool-installer.nvim"
     },  },
   {
     "neovim/nvim-lspconfig",
