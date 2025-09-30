@@ -1,6 +1,5 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-
 export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="mytheme"
@@ -23,6 +22,10 @@ alias l='ls -l'
 alias la='ls -a'
 alias lla='ls -la'
 alias lt='ls --tree'
+alias buk='cd ~/chamba/buk-webapp'
+alias cat='batcat'
+alias ssh='kitten ssh'
+
 # rbenv setup
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
