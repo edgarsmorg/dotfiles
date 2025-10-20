@@ -3,9 +3,9 @@ return {
     'nvim-telescope/telescope.nvim', tag = '0.1.8',
     dependencies = { 'nvim-lua/plenary.nvim' },
     keys = {
-      {"<leader>fg", ":Telescope live_grep prompt_prefix=🔍<cr>", desc = ""},
-      {"<C-p>", ":Telescope find_files prompt_prefix=🔍 hidden=true<cr>", desc = ""},
-      {"<C-b>", ":Telescope buffers<cr>", desc = ""}
+      {"<leader>sg", "<cmd>Telescope live_grep<CR>", desc = "[S]earch by [G]rep"},
+      {"<leader>sf", "<cmd>Telescope find_files hidden=true<CR>", desc = "[S]earch [F]iles"},
+      {"<leader><leader>", "<cmd>Telescope buffers<CR>", desc = "[  ] Find existingsbuffers"}
     },
   },
   {
@@ -29,9 +29,8 @@ return {
 
         local opts = { noremap = true, silent = true }
 
-        vim.keymap.set("n", "<Leader><Leader>i", "<cmd>IconPickerNormal<cr>", opts)
-        vim.keymap.set("n", "<Leader><Leader>y", "<cmd>IconPickerYank<cr>", opts) --> Yank the selected icon into register
-        vim.keymap.set("i", "<C-i>", "<cmd>IconPickerInsert<cr>", opts)
+        vim.keymap.set("n", "<leader>ie", "<cmd>IconPickerNormal<CR>", { desc = "[I]nsert [E]moji" } )
+        vim.keymap.set("n", "<leader>ye", "<cmd>IconPickerYank<CR>", { desc = "[Y]ank [E]moji" })
     end
   }
 }
