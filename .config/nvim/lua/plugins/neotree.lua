@@ -9,6 +9,15 @@ return {
   },
   lazy=false,
   keys = {
-    {"<C-n>",":Neotree filesystem reveal float toggle=true<cr>",desc = "Neo-tree"}
+    {"\\","<cmd>Neotree filesystem reveal float<cr>",desc = "Neo-tree reveal", silent = true },
+  },
+  opts = {
+    filesystem = {
+      window = {
+        mappings = {
+          ['\\'] = 'close_window',
+        }
+      }
+    }
   }
 }
