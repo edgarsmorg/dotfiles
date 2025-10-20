@@ -1,4 +1,4 @@
 return {
-  "meatballs/notebook.nvim",
-  opts = {} 
+	"meatballs/notebook.nvim",
+	opts = {},
 }
