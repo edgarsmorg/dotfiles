@@ -6,6 +6,8 @@ return {
 		keys = {
 			{ "<leader>sg", "<cmd>Telescope live_grep<CR>", desc = "[S]earch by [G]rep" },
 			{ "<leader>sf", "<cmd>Telescope find_files hidden=true<CR>", desc = "[S]earch [F]iles" },
+			{ "<leader>sh", "<cmd>Telescope help_tags<CR>", desc = "[S]earch [H]elp" },
+			{ "<leader>sk", "<cmd>Telescope keymaps<CR>", desc = "[S]earch [K]eymaps" },
 			{ "<leader><leader>", "<cmd>Telescope buffers<CR>", desc = "[  ] Find existingsbuffers" },
 		},
 	},
