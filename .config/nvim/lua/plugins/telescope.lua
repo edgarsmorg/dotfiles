@@ -27,8 +27,6 @@ return {
 		config = function()
 			require("icon-picker").setup({ disable_legacy_commands = true })
 
-			local opts = { noremap = true, silent = true }
-
 			vim.keymap.set("n", "<leader>ie", "<cmd>IconPickerNormal<CR>", { desc = "[I]nsert [E]moji" })
 			vim.keymap.set("n", "<leader>ye", "<cmd>IconPickerYank<CR>", { desc = "[Y]ank [E]moji" })
 		end,
