@@ -1,0 +1,3 @@
+.quick-input-widget {
+    transform: translateY(-50%) !important;
+}

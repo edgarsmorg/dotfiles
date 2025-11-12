@@ -232,6 +232,7 @@ return {
 				ts_ls = {
 					cmd = { "/home/emoralesg/.nodenv/shims/npm", "exec", "ts-ls", "--lsp" },
 				},
+				eslint = {},
 				lua_ls = {
 					-- cmd = { ... },
 					-- filetypes = { ... },
