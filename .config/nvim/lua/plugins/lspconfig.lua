@@ -233,6 +233,8 @@ return {
 					cmd = { "/home/emoralesg/.nodenv/shims/npm", "exec", "ts-ls", "--lsp" },
 				},
 				eslint = {},
+				svelte = {},
+				pylsp = {},
 				lua_ls = {
 					-- cmd = { ... },
 					-- filetypes = { ... },
@@ -267,6 +269,7 @@ return {
 				"stylua", -- Used to format Lua code
 				"prettierd",
 				"prettier",
+				"black",
 			})
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
