@@ -23,7 +23,6 @@ alias la='ls -a'
 alias lla='ls -la'
 alias lt='ls --tree'
 alias buk='cd ~/chamba/buk-webapp'
-alias cat='batcat'
 alias ssh='kitten ssh'
 
 # rbenv setup
