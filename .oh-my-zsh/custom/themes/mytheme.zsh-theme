@@ -27,21 +27,13 @@ fi
 
 local return_code="%(?..%F{red}%? ↵%f)"
 
-local user_host="${PR_USER}"
+local user_host="${PR_USER}:${PR_HOST}"
 local current_dir="%B%F{blue}%~%f%b"
 local git_branch='$(git_prompt_info)'
-local venv_prompt='$(virtualenv_prompt_info)'
-local node_prompt='%F{green}󰎙 $(nodenv_prompt_info)%f'
-local ruby_prompt='%F{red}󰅁%f'
-PROMPT="╭─${venv_prompt}${user_host} ${current_dir} \$(ruby_prompt_info) ${node_prompt} ${git_branch}
+PROMPT="╭─${user_host} ${current_dir} ${git_branch}
 ╰─$PR_PROMPT"
 RPROMPT="${return_code}"
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%F{yellow} "
 ZSH_THEME_GIT_PROMPT_SUFFIX=" %f"
-ZSH_THEME_RUBY_PROMPT_PREFIX="%F{red} "
-ZSH_THEME_RUBY_PROMPT_SUFFIX="%f"
-ZSH_THEME_VIRTUALENV_PREFIX="%F{red}  "
-ZSH_THEME_VIRTUALENV_SUFFIX=" %f"
-
 }
