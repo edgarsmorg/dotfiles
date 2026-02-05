@@ -34,3 +34,7 @@ vim.keymap.set("n", "<M-n>", ":bnext<CR>")
 vim.keymap.set("n", "<M-p>", ":bprevious<CR>")
 
 vim.o.scrolloff = 10
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldlevel = 99
+vim.opt.foldcolumn = "1"
