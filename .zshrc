@@ -23,3 +23,8 @@ alias buk='cd ~/chamba/buk-webapp'
 alias ssh='kitten ssh'
 
 export EDITOR=nvim
+
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+export PATH="$HOME/.nodenv/bin:$PATH"
+eval "$(nodenv init -)"
