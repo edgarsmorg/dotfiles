@@ -9,6 +9,7 @@ plugins=(
     zsh-autosuggestions
     zsh-syntax-highlighting
     fzf
+    distrobox-indicator
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -23,3 +24,11 @@ alias buk='cd ~/chamba/buk-webapp'
 alias ssh='kitten ssh'
 
 export EDITOR=nvim
+
+# rbenv setup
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
+# nodenv setup
+export PATH="$HOME/.nodenv/bin:$PATH"
+eval "$(nodenv init -)"

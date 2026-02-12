@@ -30,7 +30,8 @@ local return_code="%(?..%F{red}%? ↵%f)"
 local user_host="${PR_USER}:${PR_HOST}"
 local current_dir="%B%F{blue}%~%f%b"
 local git_branch='$(git_prompt_info)'
-PROMPT="╭─${user_host} ${current_dir} ${git_branch}
+local distrobox='$(distrobox_prompt_info)'
+PROMPT="╭─${user_host} ${distrobox} ${current_dir} ${git_branch}
 ╰─$PR_PROMPT"
 RPROMPT="${return_code}"
 
