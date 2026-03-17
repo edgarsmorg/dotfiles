@@ -1,7 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 export ZSH="$HOME/.oh-my-zsh"
-
 ZSH_THEME="mytheme"
 
 plugins=( 
@@ -21,7 +20,7 @@ alias la='ls -a'
 alias lla='ls -la'
 alias lt='ls --tree'
 alias buk='cd ~/chamba/buk-webapp'
-alias ssh='kitten ssh'
+alias st-env='distrobox enter trabajo-env'
 
 export EDITOR=nvim
 
@@ -32,3 +31,6 @@ eval "$(rbenv init -)"
 # nodenv setup
 export PATH="$HOME/.nodenv/bin:$PATH"
 eval "$(nodenv init -)"
+
+
+export PATH="$HOME/.local/bin:$PATH"
