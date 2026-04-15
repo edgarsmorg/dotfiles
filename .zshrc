@@ -28,3 +28,7 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 export PATH="$HOME/.nodenv/bin:$PATH"
 eval "$(nodenv init -)"
+export PATH="$HOME/.local/bin:$PATH"
+alias jira='jira-cli'
+
+eval "$(direnv hook bash)"
