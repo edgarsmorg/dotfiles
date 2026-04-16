@@ -6,7 +6,7 @@ vim.pack.add{
 	{ src = "https://github.com/L3MON4D3/LuaSnip" },
 	{ src = "https://github.com/rafamadriz/friendly-snippets" },
 	-- Stay on the stable v1 line instead of following main/v2.
-	{ src = "https://github.com/saghen/blink.cmp", version = vim.version.range("1.*") },
+	{ src = "https://github.com/saghen/blink.cmp", version = "1.10.2" },
 }
 
 -- Auto-carga de lua/servers/
