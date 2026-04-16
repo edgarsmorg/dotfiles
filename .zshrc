@@ -5,10 +5,10 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="mytheme"
 
 plugins=( 
-    git
-    zsh-autosuggestions
-    zsh-syntax-highlighting
-    fzf
+  git
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+  fzf
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -31,4 +31,4 @@ eval "$(nodenv init -)"
 export PATH="$HOME/.local/bin:$PATH"
 alias jira='jira-cli'
 
-eval "$(direnv hook bash)"
+eval "$(direnv hook zsh)"
