@@ -1,14 +1,11 @@
-return {
-	"nvim-treesitter/nvim-treesitter",
-	branch = "master",
-	dependencies = { "fladson/vim-kitty" },
-	lazy = false,
-	build = ":TSUpdate",
-	opts = {
-		auto_install = true,
-		highlight = {
-			enable = true,
-			additional_vim_regex_highlighting = { "kitty" },
-		},
-	},
+vim.pack.add {
+	{ src = 'https://github.com/fladson/vim-kitty' },
+	{ src = 'https://github.com/nvim-treesitter/nvim-treesitter', build = ':TSUpdate'},
+}
+require('nvim-treesitter').setup {
+	auto_install = true,
+	highlight = {
+		enable = true,
+		additional_vim_regex_highlighting = { "kitty" },
+	}
 }

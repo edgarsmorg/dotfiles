@@ -1,36 +1,11 @@
-return {
-	{
-		"nvim-telescope/telescope.nvim",
-		tag = "0.1.8",
-		dependencies = { "nvim-lua/plenary.nvim" },
-		keys = {
-			{ "<leader>sg", "<cmd>Telescope live_grep<CR>", desc = "[S]earch by [G]rep" },
-			{ "<leader>sf", "<cmd>Telescope find_files hidden=true<CR>", desc = "[S]earch [F]iles" },
-			{ "<leader>sh", "<cmd>Telescope help_tags<CR>", desc = "[S]earch [H]elp" },
-			{ "<leader>sk", "<cmd>Telescope keymaps<CR>", desc = "[S]earch [K]eymaps" },
-			{ "<leader><leader>", "<cmd>Telescope buffers<CR>", desc = "[  ] Find existingsbuffers" },
-		},
-	},
-	{
-		"nvim-telescope/telescope-ui-select.nvim",
-		config = function()
-			require("telescope").setup({
-				extensions = {
-					["ui-select"] = {
-						require("telescope.themes").get_dropdown({}),
-					},
-				},
-			})
-			require("telescope").load_extension("ui-select")
-		end,
-	},
-	{
-		"ziontee113/icon-picker.nvim",
-		config = function()
-			require("icon-picker").setup({ disable_legacy_commands = true })
+vim.pack.add({
+  { src = 'https://github.com/nvim-lua/plenary.nvim' },
+  { src = 'https://github.com/nvim-telescope/telescope.nvim', version = vim.version.range('*')},
+})
 
-			vim.keymap.set("n", "<leader>ie", "<cmd>IconPickerNormal<CR>", { desc = "[I]nsert [E]moji" })
-			vim.keymap.set("n", "<leader>ye", "<cmd>IconPickerYank<CR>", { desc = "[Y]ank [E]moji" })
-		end,
-	},
-}
+require('telescope').setup({})
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]ile' })
+vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch  word by [G]rep' })
+vim.keymap.set('n', '<leader>sb', builtin.buffers, { desc = '[S]earch [B]uffers' })
+vim.keymap.set('n', '<leader>sd', builtin.git_status, { desc = '[S]earch files with [D]iff)'})

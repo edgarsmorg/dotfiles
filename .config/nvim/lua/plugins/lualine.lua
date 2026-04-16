@@ -1,8 +1,11 @@
-return {
-	"nvim-lualine/lualine.nvim",
-	dependencies = {
-		"DaikyXendo/nvim-material-icon",
-		--'nvim-tree/nvim-web-devicons',
-	},
-	opts = { themes = "iceberg_dark" },
+vim.pack.add {
+	{ src = 'https://github.com/nvim-tree/nvim-web-devicons' },
+	{ src = 'https://github.com/nvim-lualine/lualine.nvim' }
 }
+
+require('lualine').setup({
+	themes = 'iceberg_dark',
+	sections = {
+		lualine_x = {'lsp_status', 'filetype'}
+	}
+})
