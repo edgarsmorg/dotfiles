@@ -20,7 +20,7 @@ alias la='ls -a'
 alias lla='ls -la'
 alias lt='ls --tree'
 alias buk='cd ~/chamba/buk-webapp'
-alias st-env='distrobox enter trabajo-env'
+alias memoria='cd ~/uni/memoria/LCA-lzindex'
 
 export EDITOR=nvim
 
