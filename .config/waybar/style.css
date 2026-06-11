@@ -1,0 +1,230 @@
+@define-color bg rgba(6, 12, 24, 0.72);
+@define-color bg-strong rgba(9, 17, 32, 0.92);
+@define-color bg-soft rgba(19, 32, 55, 0.72);
+@define-color border rgba(129, 194, 255, 0.18);
+@define-color border-strong rgba(129, 194, 255, 0.38);
+@define-color text #e9f4ff;
+@define-color muted #9bb1cf;
+@define-color cyan #7ad9ff;
+@define-color blue #78a9ff;
+@define-color red #ff7d8a;
+@define-color yellow #f3d66d;
+@define-color green #7ed7a1;
+
+* {
+  font-family: FontAwesome, IosevkaTerm Nerd Font Mono;
+  font-size: 14px;
+  min-height: 0;
+}
+
+window#waybar {
+  background: transparent;
+  color: @text;
+}
+
+window#waybar > box {
+  margin: 5px 6px 5px;
+  padding: 3px 4px;
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(11, 18, 34, 0.86), rgba(4, 9, 18, 0.70));
+  border: 1px solid @border;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.40);
+}
+
+window#waybar.hidden {
+  opacity: 0.2;
+}
+
+button {
+  border: none;
+  border-radius: 12px;
+  box-shadow: inset 0 -2px transparent;
+  transition: all 180ms ease;
+}
+
+button:hover {
+  background: rgba(122, 217, 255, 0.10);
+  box-shadow: inset 0 -2px @cyan;
+}
+
+#workspaces {
+  padding: 0;
+  margin-right: 4px;
+}
+
+#workspaces button {
+  padding: 0 8px;
+  margin-right: 4px;
+  font-size: 15px;
+  color: @muted;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid transparent;
+}
+
+#workspaces button:last-child {
+  margin-right: 0;
+}
+
+#workspaces button.active,
+#workspaces button.focused {
+  color: @text;
+  background: linear-gradient(180deg, rgba(122, 217, 255, 0.26), rgba(120, 169, 255, 0.14));
+  border-color: @border-strong;
+  box-shadow: inset 0 -2px @cyan;
+}
+
+#workspaces button.visible {
+  color: @text;
+  background: rgba(122, 217, 255, 0.08);
+}
+
+#workspaces button.urgent {
+  color: #fff;
+  background: linear-gradient(180deg, rgba(255, 125, 138, 0.34), rgba(255, 125, 138, 0.16));
+  border-color: rgba(255, 125, 138, 0.55);
+}
+
+#window,
+#clock,
+#battery,
+#cpu,
+#memory,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#wireplumber,
+#tray,
+#mode,
+#idle_inhibitor,
+#scratchpad,
+#power-profiles-daemon,
+#mpd,
+#mpris,
+#language {
+  padding: 0 12px;
+  margin: 0 4px;
+  font-size: 14px;
+  color: @text;
+  background: @bg;
+  border: 1px solid @border;
+  border-radius: 12px;
+}
+
+#window {
+  padding-left: 14px;
+  padding-right: 14px;
+  color: @muted;
+  font-weight: 500;
+}
+
+#window.empty {
+  background: transparent;
+  border-color: transparent;
+}
+
+#clock {
+  color: @cyan;
+  font-weight: 600;
+}
+
+#battery.charging,
+#battery.plugged {
+  color: @green;
+  border-color: rgba(126, 215, 161, 0.38);
+}
+
+#battery.warning {
+  color: @yellow;
+  border-color: rgba(243, 214, 109, 0.38);
+}
+
+#battery.critical:not(.charging) {
+  color: @red;
+  border-color: rgba(255, 125, 138, 0.52);
+  animation: pulse 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes pulse {
+  from {
+    background: rgba(255, 125, 138, 0.14);
+  }
+  to {
+    background: rgba(255, 125, 138, 0.28);
+  }
+}
+
+#cpu {
+  color: @blue;
+}
+
+#memory {
+  color: @cyan;
+}
+
+#temperature {
+  color: @yellow;
+}
+
+#network {
+  color: @blue;
+}
+
+#network.disconnected {
+  color: @red;
+}
+
+#pulseaudio,
+#wireplumber {
+  color: @text;
+}
+
+#pulseaudio.muted,
+#wireplumber.muted {
+  color: @muted;
+}
+
+#tray {
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 15px;
+}
+
+#tray > .passive,
+#tray > .needs-attention {
+  -gtk-icon-effect: none;
+}
+
+#tray > .needs-attention {
+  color: @red;
+}
+
+#mpris {
+  color: @muted;
+}
+
+#mode,
+#idle_inhibitor,
+#scratchpad,
+#power-profiles-daemon {
+  color: @cyan;
+}
+
+#power-profiles-daemon.performance {
+  color: @red;
+}
+
+#power-profiles-daemon.power-saver {
+  color: @green;
+}
+
+tooltip {
+  background: @bg-strong;
+  border: 1px solid @border-strong;
+  border-radius: 12px;
+}
+
+tooltip label {
+  color: @text;
+  padding: 4px 6px;
+}
