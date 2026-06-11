@@ -1,0 +1,2 @@
+- Conectar el modulo de sonido de waybar con hyprpwcenter
+- 
