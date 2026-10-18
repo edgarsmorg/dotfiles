@@ -9,29 +9,12 @@ vim.pack.add{
 	{ src = "https://github.com/saghen/blink.cmp", version = "1.10.2" },
 }
 
--- Auto-carga de lua/servers/
-
-local servers_dir = vim.fn.stdpath('config') .. '/lua/servers'
-local server_modules = {}
-
-for name, kind in vim.fs.dir(servers_dir) do
-  if kind == 'file' and name:sub(-4) == '.lua' then
-    server_modules[#server_modules + 1] = name:sub(1, -5)
-  end
-end
-
-table.sort(server_modules)
-
-local servers = {}
-
-for _, module in ipairs(server_modules) do
-  local ok, server = pcall(require, 'servers.' .. module)
-  if ok and server.name and server.config then
-    servers[#servers+1] = server
-  else
-    vim.notify('[lsp] Error cargando servers.' .. module, vim.log.levels.WARN)
-  end
-end
+local servers = {
+  require('servers.csslps'),
+  require('servers.lua_ls'),
+  require('servers.ruby_lsp'),
+  require('servers.sorbet'),
+}
 
 require('mason').setup({})
 require('mason-lspconfig').setup({})
@@ -49,6 +32,7 @@ end
 
 require("luasnip.loaders.from_vscode").lazy_load()
 require("blink.cmp").setup({
+  snippets = { preset = "luasnip" },
   fuzzy = {
     implementation = "prefer_rust",
   },
