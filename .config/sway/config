@@ -1,0 +1,111 @@
+set $mod Mod4
+
+# Home row direction keys, like vim
+set $left h
+set $down j
+set $up k
+set $right l
+
+set $term /home/edgarmorales/.local/bin/kitty
+set $menu wofi --show drun
+set $browser /home/edgarmorales/.local/opt/zen-browser/zen
+set $swaysome /home/edgarmorales/.local/bin/swaysome
+
+include /etc/sway/config-vars.d/*
+
+# output eDP-1 pos -1980 0
+# output eDP-1 pos 2560 0
+output eDP-1 pos 0 0
+# output eDP-1 disable
+
+output HDMI-A-1 pos 0 -1200
+# output HDMI-A-1 disable
+
+output DP-2 pos 0 0
+output DP-2 disable
+output * bg '~/Imágenes/Wallpapers/araucaria.jpg' fill
+
+bindsym $mod+Return exec $term
+bindsym $mod+B exec $browser
+bindsym $mod+D exec $menu
+bindsym $mod+Control+L exec swaylock --color 000000
+
+bindsym $mod+Q kill
+
+bindsym $mod+Shift+C reload
+bindsym $mod+Shift+A exec /home/edgarmorales/.local/bin/always-active toggle
+
+exec_always $swaysome init 0
+
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+
+
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+
+# Move focused container between workspace groups
+bindsym $mod+N exec $swaysome next-group
+bindsym $mod+Shift+N exec $swaysome next-output
+bindsym $mod+Control+1 exec $swaysome move-to-group 0
+
+# Switch to workspace on the focused output group
+bindsym $mod+1 exec $swaysome focus 0
+bindsym $mod+2 exec $swaysome focus 1
+bindsym $mod+3 exec $swaysome focus 2
+bindsym $mod+4 exec $swaysome focus 3
+bindsym $mod+5 exec $swaysome focus 4
+bindsym $mod+6 exec $swaysome focus 5
+bindsym $mod+7 exec $swaysome focus 6
+bindsym $mod+8 exec $swaysome focus 7
+bindsym $mod+9 exec $swaysome focus 8
+bindsym $mod+0 exec $swaysome focus 9
+# Move focused container to workspace on the focused output group
+bindsym $mod+Shift+1 exec $swaysome move 0
+bindsym $mod+Shift+2 exec $swaysome move 1
+bindsym $mod+Shift+3 exec $swaysome move 2
+bindsym $mod+Shift+4 exec $swaysome move 3
+bindsym $mod+Shift+5 exec $swaysome move 4
+bindsym $mod+Shift+6 exec $swaysome move 5
+bindsym $mod+Shift+7 exec $swaysome move 6
+bindsym $mod+Shift+8 exec $swaysome move 7
+bindsym $mod+Shift+9 exec $swaysome move 8
+bindsym $mod+Shift+0 exec $swaysome move 9
+
+bindsym XF86AudioPlay exec exec playerctl play
+bindsym XF86AudioPause exec exec playerctl pause
+bindsym XF86AudioMute exec exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym XF86MonBrightnessDown exec exec brightnessctl set 5%-
+bindsym XF86MonBrightnessUp exec exec brightnessctl set +5%
+bindsym XF86Display exec arandr
+bindsym Print exec grim "$HOME/Imágenes/$(date +%Y%m%d-%H%M%S).png"
+bindsym $mod+Shift+S exec grim -g "$(slurp)" - | wl-copy --type image/png
+bindsym XF86Launch2 exec grim -g "$(slurp)" "$HOME/Imágenes/$(date +%Y%m%d-%H%M%S).png"
+
+bindsym $mod+Shift+F fullscreen
+
+smart_gaps on
+smart_borders on
+gaps outer 3
+gaps inner 5
+default_border pixel 2
+
+bar {
+	swaybar_command waybar
+}
+
+
+input "type:keyboard" {
+	xkb_layout us,latam
+	xkb_options grp:alt_shift_toggle
+}
+
+include /etc/sway/config.d/*
+include ~/.config/sway/config.d/*
