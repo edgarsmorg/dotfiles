@@ -19,8 +19,10 @@ alias l='ls -l'
 alias la='ls -a'
 alias lla='ls -la'
 alias lt='ls --tree'
-alias buk='cd ~/chamba/buk-webapp'
-alias memoria='cd ~/uni/memoria/LCA-lzindex'
+alias buk='cd ~/chamba/buk-webapp && zellij'
+alias codex-buk='CODEX_HOME=$HOME/.codex-buk codex'
+alias memoria='cd ~/uni/memoria'
+alias bat='batcat'
 
 export EDITOR=nvim
 
@@ -34,3 +36,10 @@ eval "$(nodenv init -)"
 
 
 export PATH="$HOME/.local/bin:$PATH"
+
+# direnv
+eval "$(direnv hook zsh)"
+
+
+# Added by Antigravity CLI installer
+export PATH="/home/edgarmorales/.local/bin:$PATH"

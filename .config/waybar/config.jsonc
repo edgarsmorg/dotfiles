@@ -6,23 +6,26 @@
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": [
-        "hyprland/workspaces",
+        "custom/always-active",
+        "sway/workspaces",
         "tray",
         "mpris"
     ],
     "modules-center": [
-        "hyprland/window"
+        "sway/window",
     ],
     "modules-right": [
         "pulseaudio",
+        "backlight",
         "network",
         "cpu",
         "memory",
         "temperature",
-        "hyprland/language",
-        "clock"
+        "sway/language",
+        "battery",
+				"clock"
     ],
-    "hyprland/workspaces": {
+    "sway/workspaces": {
       "format": "{icon}",
       "format-icons": {
         "urgent": "",
@@ -31,9 +34,14 @@
         "default": "",
         "empty": "" // persistent (created by this plugin)
       },
-      "on-scroll-up": "hyprctl dispatch split-cycleworkspaces -1",
-      "on-scroll-down": "hyprctl dispatch split-cycleworkspaces +1",
       "all-outputs": false // recommended
+    },
+    "custom/always-active": {
+        "exec": "/home/edgarmorales/.local/bin/always-active status",
+        "return-type": "json",
+        "interval": "once",
+        "signal": 8,
+        "on-click": "/home/edgarmorales/.local/bin/always-active toggle"
     },
     "tray": {
         // "icon-size": 21,
@@ -66,10 +74,9 @@
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
+        "format-ethernet": "{ipaddr}/{cidr} 󰈀",
+        "tooltip-format": "{ifname} via {gwaddr} 󰈀",
+        "format-linked": "{ifname} (No IP) 󰈀", "format-disconnected": "Disconnected ⚠",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
     "pulseaudio": {
@@ -91,10 +98,27 @@
         },
         "on-click": "hyprpwcenter"
     },
+    "backlight": {
+        "format": "{percent}% ",
+        "scroll-step": 5,
+        "tooltip": false
+    },
     "mpris": {
       "format": "{player_icon} {dynamic}",
       "format-paused": "{player_icon} {dynamic}",
       "interval": 1,
       "album-len": 0
-    }
+    },
+		"battery": {
+			"states": {
+				"warning": 20,
+				"critical": 5
+			},
+			"format": "{icon}",
+			"format-charging": "",
+			"format-plugged": "",
+			"format-alt": "{capacity}% {icon}",
+			"format-icons": ["", "", "", "", ""],
+			"tooltip-format": "{capacity}%"
+		}
 }

@@ -12,7 +12,7 @@
 @define-color green #7ed7a1;
 
 * {
-  font-family: FontAwesome, IosevkaTerm Nerd Font Mono;
+  font-family: FontAwesome, Iosevka Nerd Font Mono;
   font-size: 14px;
   min-height: 0;
 }
@@ -85,6 +85,7 @@ button:hover {
 }
 
 #window,
+#custom-always-active,
 #clock,
 #battery,
 #cpu,
@@ -200,6 +201,15 @@ button:hover {
 }
 
 #mpris {
+  color: @muted;
+}
+
+#custom-always-active.active {
+  color: @green;
+  border-color: rgba(126, 215, 161, 0.38);
+}
+
+#custom-always-active.inactive {
   color: @muted;
 }
 
