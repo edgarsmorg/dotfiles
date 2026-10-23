@@ -1,5 +1,7 @@
 local mainMod = "SUPER"
 
+hl.bind(mainMod .. " + SHIFT + L", hl.dsp.exec_cmd("pidof hyprlock >/dev/null || hyprlock"), { description = "Lock session" })
+
 hl.bind("CONTROL + ALT + DELETE", hl.dsp.exec_cmd("hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
 hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd("pkill qs && qs"))
 hl.bind(mainMod .. " + CONTROL + B", hl.dsp.exec_cmd("pkill swaync; swaync"))

@@ -26,12 +26,15 @@ end
 require('mason-tool-installer').setup({ ensure_installed = tools})
 
 for _, s in ipairs(servers) do
+  s.config.capabilities = require('blink.cmp').get_lsp_capabilities(s.config.capabilities)
   vim.lsp.config(s.name, s.config)
   vim.lsp.enable(s.name)
 end
 
 require("luasnip.loaders.from_vscode").lazy_load()
 require("blink.cmp").setup({
+  keymap = { preset = "default" },
+  sources = { default = { "lsp", "path", "snippets", "buffer" } },
   snippets = { preset = "luasnip" },
   fuzzy = {
     implementation = "prefer_rust",

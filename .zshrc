@@ -8,7 +8,6 @@ plugins=(
     zsh-autosuggestions
     zsh-syntax-highlighting
     fzf
-    distrobox-indicator
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -23,6 +22,8 @@ alias buk='cd ~/chamba/buk-webapp && zellij'
 alias codex-buk='CODEX_HOME=$HOME/.codex-buk codex'
 alias memoria='cd ~/uni/memoria'
 alias bat='batcat'
+alias ssh='kitten ssh'
+alias wifi-rescan='nmcli device wifi rescan'
 
 export EDITOR=nvim
 
@@ -34,12 +35,12 @@ eval "$(rbenv init -)"
 export PATH="$HOME/.nodenv/bin:$PATH"
 eval "$(nodenv init -)"
 
-
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$(npm config get prefix)/bin:$PATH"
 
 # direnv
 eval "$(direnv hook zsh)"
 
 
-# Added by Antigravity CLI installer
-export PATH="/home/edgarmorales/.local/bin:$PATH"
+# opencode
+export PATH=/home/edgarmorales/.opencode/bin:$PATH
