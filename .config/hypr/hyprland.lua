@@ -1,14 +1,20 @@
 require('config.monitors')
+local splitWorkspaces = require('config.workspaces')
 local apps = require('config.apps')
 
 hl.on("hyprland.start", function ()
-	hl.exec_cmd("waybar & hyprpaper")
+	hl.exec_cmd("dbus-update-activation-environment --systemd GTK_THEME XDG_DATA_DIRS")
+	hl.exec_cmd("gsettings set org.gnome.desktop.interface icon-theme Matugen-Adwaita")
+	hl.exec_cmd("bash ~/.config/hypr/scripts/apply-hyprland-borders.sh")
+	hl.exec_cmd("qs & hyprpaper")
 	hl.exec_cmd("hyprpm reload -n")
-	hl.exec_cmd("dunst")
+	hl.exec_cmd("swaync")
 	hl.exec_cmd("easyeffects -w")
 end)
 
 hl.env("XCURSOR_SIZE", "36")
+hl.env("GTK_THEME", "Adwaita")
+hl.env("XDG_DATA_DIRS", "/home/emoralesg/.config/matugen/data:/home/emoralesg/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share")
 hl.env("HYPRCURSOR_THEME", "Fuure-Cyan-Hypercursor_Theme")
 hl.env("HYPRCURSOR_SIZE", "36")
 
@@ -19,10 +25,6 @@ hl.config({
 
 		border_size = 2,
 
-		col = {
-			active_border = { colors = { "rgba(33ccffee)", "rgba(00ff99ee)"}, angle = 45 },
-			inactive_border = "rgba(595959aa)",
-		},
 		resize_on_border = false,
 		allow_tearing = false,
 		layout = "dwindle",
@@ -31,6 +33,8 @@ hl.config({
 	decoration = {
 		rounding = 10,
 		rounding_power = 2,
+		active_opacity = 0.95,
+		inactive_opacity = 0.95,
 
 		shadow = {
 			enabled = true,
@@ -71,24 +75,6 @@ hl.animation({ leaf = "workspacesIn",  enabled = true,  speed = 1.21, bezier = "
 hl.animation({ leaf = "workspacesOut", enabled = true,  speed = 1.94, bezier = "almostLinear", style = "fade" })
 hl.animation({ leaf = "zoomFactor",    enabled = true,  speed = 7,    bezier = "quick" })
 
--- Ref https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
--- "Smart gaps" / "No gaps when only"
--- uncomment all if you wish to use that.
-hl.workspace_rule({ workspace = "w[tv1]", gaps_out = 0, gaps_in = 0 })
-hl.workspace_rule({ workspace = "f[1]",   gaps_out = 0, gaps_in = 0 })
-hl.window_rule({
-    name  = "no-gaps-wtv1",
-    match = { float = false, workspace = "w[tv1]" },
-    border_size = 0,
-    rounding    = 0,
-})
-hl.window_rule({
-    name  = "no-gaps-f1",
-    match = { float = false, workspace = "f[1]" },
-    border_size = 0,
-    rounding    = 0,
-})
-
 
 hl.config({
 	dwindle = {
@@ -106,7 +92,7 @@ hl.config({
 hl.config({
 	input = {
 		kb_layout = "us, latam",
-		kb_variant = "",
+		kb_variant ="",
 		kb_model = "",
 		kb_options = "grp:alt_shift_toggle",
 		kb_rules = "",
@@ -127,62 +113,5 @@ require('bindings.applications')(apps)
 require('bindings.media')
 require('bindings.navigation')
 require('bindings.system')
-require('bindings.workspaces')
-
-
---------------------------------
----- WINDOWS AND WORKSPACES ----
---------------------------------
-
--- See https://wiki.hypr.land/Configuring/Basics/Window-Rules/
--- and https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
-
--- Example window rules that are useful
-
-local suppressMaximizeRule = hl.window_rule({
-    -- Ignore maximize requests from all apps. You'll probably like this.
-    name  = "suppress-maximize-events",
-    match = { class = ".*" },
-
-    suppress_event = "maximize",
-})
--- suppressMaximizeRule:set_enabled(false)
-
-hl.window_rule({
-    -- Fix some dragging issues with XWayland
-    name  = "fix-xwayland-drags",
-    match = {
-        class      = "^$",
-        title      = "^$",
-        xwayland   = true,
-        float      = true,
-        fullscreen = false,
-        pin        = false,
-    },
-
-    no_focus = true,
-})
-
--- Layer rules also return a handle.
--- local overlayLayerRule = hl.layer_rule({
---     name  = "no-anim-overlay",
---     match = { namespace = "^my-overlay$" },
---     no_anim = true,
--- })
--- overlayLayerRule:set_enabled(false)
-
--- Hyprland-run windowrule
-hl.window_rule({
-    name  = "move-hyprland-run",
-    match = { class = "hyprland-run" },
-
-    move  = "20 monitor_h-120",
-    float = true,
-})
-
-
-hl.config({
-	plugin = {
-		split_monitor_workspaces = {}
-	},
-})
+require('bindings.workspaces')(splitWorkspaces)
+require("windowrules")

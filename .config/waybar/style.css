@@ -1,5 +1,5 @@
-@define-color bg rgba(6, 12, 24, 0.72);
-@define-color bg-strong rgba(9, 17, 32, 0.92);
+@define-color bg rgba(6, 12, 24, 0.1);
+@define-color bg-strong rgba(9, 17, 32, 0.3);
 @define-color bg-soft rgba(19, 32, 55, 0.72);
 @define-color border rgba(129, 194, 255, 0.18);
 @define-color border-strong rgba(129, 194, 255, 0.38);
@@ -26,13 +26,13 @@ window#waybar > box {
   margin: 5px 6px 5px;
   padding: 3px 4px;
   border-radius: 18px;
-  background: linear-gradient(180deg, rgba(11, 18, 34, 0.86), rgba(4, 9, 18, 0.70));
+  background: linear-gradient(180deg, rgba(11, 18, 34, 0.82), rgba(4, 9, 18, 0.70));
   border: 1px solid @border;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.40);
 }
 
 window#waybar.hidden {
-  opacity: 0.2;
+  opacity: 0,2;
 }
 
 button {
@@ -43,7 +43,7 @@ button {
 }
 
 button:hover {
-  background: rgba(122, 217, 255, 0.10);
+  background: rgba(122, 217, 255, 0.1);
   box-shadow: inset 0 -2px @cyan;
 }
 

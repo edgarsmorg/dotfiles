@@ -7,4 +7,5 @@ return function (apps)
 	hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(apps.fileManager))
 	hl.bind(mainMod .. " + D", hl.dsp.exec_cmd(apps.menu))
 	hl.bind(mainMod .. " + C", hl.dsp.exec_cmd("hyprshot -m region --clipboard-only"))
+	hl.bind(mainMod .. " + SHIFT + C", hl.dsp.exec_cmd("hyprscreen record area"))
 end
